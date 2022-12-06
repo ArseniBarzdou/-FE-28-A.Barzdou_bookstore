@@ -1,0 +1,41 @@
+input {padding-left: 20px;}
+
+
+.input {
+    border-radius: 2px;
+    border: 2px solid transparent;
+    outline: none;
+    color: #ffffff50;
+    width: 845px;
+    font-size: 16px;
+    font-weight:400;
+    height: 54px;
+}
+.input:focus,
+.input:hover {
+    border-color: #dadada;
+}
+/* .input:disabled {
+    background: #e8e8e8;
+    color: #ffffff50;
+} */
+.error {
+    border-color: #fd3419;
+}
+
+.inputSearch__Wrapper{
+    /* border: 2px solid #E7E7E7; */
+    display: flex;
+    align-items: center;
+}
+
+
+
+.signInBtn{
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    width: 150px;
+    height: 60px;
+}

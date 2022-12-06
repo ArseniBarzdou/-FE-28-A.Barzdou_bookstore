@@ -1,0 +1,21 @@
+.Sub__Wrapper{
+    display: flex;
+    width: 1120px;
+    height: 288px;
+    margin: 0 auto;
+    background-color: #F4EEFD;
+    flex-direction: column;
+    margin-bottom: 72px;
+    margin-top: 72px;
+}
+
+.Sub__Block{
+    padding-top: 56px;
+    width: 992px;
+    margin: 0 auto;
+}
+
+.Sub__Text{
+    color: #000000;
+    padding-bottom: 32px;
+}

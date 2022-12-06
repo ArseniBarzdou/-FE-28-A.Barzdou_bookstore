@@ -1,0 +1,188 @@
+.post {
+    display: flex;
+    /* border-bottom: 1px solid rgba(218, 218, 218, 1); */
+    justify-content: center;
+    align-items: center;
+    margin: auto 0 ;
+    /* padding-bottom: 40px; */
+}
+
+.textImgWrap {
+    margin-bottom: 35px;
+}
+
+.smallPost .textImgWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 25px;
+}
+
+
+
+.smallPost {
+    width: 352px;
+    padding: 48px 16px 0 1px ;
+    /* margin-right: 32px; */
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+
+
+.smallPost .contentWrapper {
+    width: 222px;
+    margin-right: 34px;
+}
+
+
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.largePost .titleWrapper {
+    margin-bottom: 24px;
+}
+
+
+.imgWrapper {
+    background: #D7E4FD;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 352px;
+
+}
+.imgWrapper img {
+    width: 226px;
+    height: 264px;
+    margin: 0 auto;
+
+}
+
+.textWrap{
+    margin-bottom: 40px;
+
+}
+
+.textTitle{
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 8px;
+    height: 64px;
+
+}
+
+.textSubtitle{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #A8A8A8;
+}
+
+.infoWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoPrice{
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px
+}
+
+
+.date {
+    color: rgba(141, 142, 151, 1);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 8px;
+}
+.title {
+    color: rgba(49, 48, 55, 1);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px;
+    cursor: pointer;
+}
+.title:hover{
+    color: #2231AA;
+    transition: 0.2s;
+}
+.largePost .title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+}
+
+.textWrapper {
+    color: rgba(141, 142, 151, 1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.iconsWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 352px;
+}
+
+.largePost .iconsWrapper {
+    width: 100%;
+}
+
+.iconsThumb{
+    display:flex;
+    gap: 52px;
+    cursor: pointer;
+}
+
+.iconsDown .iconsUp {
+    display: flex;
+}
+.iconsUp :hover {
+    fill: red;
+
+}
+
+.likeStatusButton {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 42px;
+}
+
+.iconsOptions{
+    display: block;
+    margin-left: auto;
+    padding-right:1em;
+    cursor: pointer;
+
+}
+
+.like svg path {
+    fill: rgb(70, 248, 109);
+}
+
+.dislike svg path {
+    fill: red;
+}
+
+.saveIcon svg path {
+    fill: #a1a100;
+}
+

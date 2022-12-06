@@ -1,13 +1,42 @@
-import React from 'react';
-//@ts-ignore
+import React, {useState} from 'react';
+import { Provider, useDispatch, useSelector } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+
+
+
+// @ts-ignore
+import store from './Redux/store';
+import Router from './Pages/Router';
+import Header from './Components/Header/Header';
+
 import './App.module.css';
+import Title from './Components/Title';
+import Footer from './Components/Footer';
+import  CardList from './Components/CardList';
+import PostsSelectors from "./Redux/Selectors/postSelectors";
+import {
+  getPosts,
+  setCardsList,
+} from "../src/Redux/Reducers/PostReducers";
+import Listing from './Pages/Listing';
+import PagesWrapper from './Pages/PagesWrapper';
 
-function App() {
+const App = () => {
+  const cardsList = useSelector(PostsSelectors.getCardsList);
+
+  const dispatch = useDispatch();
+
   return (
-    <div className="App">
-      
-    </div>
+          <div>
+            <Router/>
+          </div>
   );
-}
-
-export default App;
+};
+const AppWithStore = () => {
+  return (
+  <Provider store={store}>
+        <App />
+  </Provider>
+  );
+};
+export default AppWithStore;
