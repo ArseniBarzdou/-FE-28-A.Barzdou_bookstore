@@ -14,4 +14,4 @@ export type BookType = {
 
 export type BookProps = {
     post: BookType ;
-  };
+};

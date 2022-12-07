@@ -1,5 +1,7 @@
 import React, {FC, useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
+import { useDispatch } from "react-redux";
+
 
 // @ts-ignore
 import styles from './SignIn.module.css'
@@ -10,9 +12,11 @@ import Label from "../../Components/Label";
 import { PathNames } from "../Router/Router";
 import Input from "../../Components/Input";
 import {IconArrowLeft} from '../../../src/Assets/Icons';
+import { authUser } from "../../Redux/Reducers/authReducer";
 
 
-const validateMail = (email: string) => {
+
+const validateEmail = (email: string) => {
     return String(email)
     .toLowerCase()
     .match(
@@ -21,13 +25,14 @@ const validateMail = (email: string) => {
 };
 
 const SignIn = () => {
-    const [mail, setMail] = useState("");
-    const [mailError, setMailError] = useState("");
-    const [mailTouch, setMailTouch] = useState(false);
-
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [emailTouched, setEmailTouched] = useState(false);
+  
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [passwordTouch, setPasswordTouch] = useState(false);
+    const [passwordTouched, setPasswordTouched] = useState(false);
 
 
     const [value, setValue] = useState<string>("");
@@ -35,28 +40,27 @@ const SignIn = () => {
     setValue(inputValue);
     };
 
-    const onChangeMail = (value: string) => {
-        setMail(value);
-        setMailTouch(true);
+
+
+    useEffect(() => {
+        if (emailTouched && !validateEmail(email)) {
+            setEmailError("Set correct email");
+        } else {
+            setEmailError("");
+        }
+    }, [emailTouched, email]);
+    
+    useEffect(() => {
+        if (passwordTouched && password.length < 8) {
+            setPasswordError("Enter more than 8 characters");
+        } else {
+            setPasswordError("");
+        }
+    }, [passwordTouched, password]);
+
+    const onSignIn = () => {
+        dispatch(authUser({ email, password }));
     };
-
-
-    useEffect(() => {
-        if (mailTouch && !validateMail(mail)) {
-        setMailError("Set correct email");
-        } else {
-        setMailError("");
-        }
-    }, [mailTouch, mail]);
-
-    useEffect(() => {
-        if (passwordTouch && password.length < 8) {
-        setPasswordError("Enter more than 8 characters");
-        } else {
-        setPasswordError("");
-        }
-    }, [passwordTouch, password]);
-
 
     return (
         <div className={classNames(styles.container)}>
@@ -85,11 +89,11 @@ const SignIn = () => {
                     <div>
                         <Input 
                             placeholder={"Your email"}
-                            onChange={setMail}
-                            value={mail}
-                            error={!!mailError}
+                            onChange={setEmail}
+                            value={email}
+                            error={!!emailError}
                         />
-                        {mailTouch && mailError && <div>{mailError}</div>}
+                        {emailTouched && emailError && <div>{emailError}</div>}
                     </div>
                 <div>
                     <div className={classNames(styles.block__Text)}>Password</div>
@@ -99,16 +103,14 @@ const SignIn = () => {
                     value={password}
                     error={!!passwordError}
                     />
-                    {passwordTouch && passwordError && <div className={classNames(styles.passwordError)} >{passwordError}</div>}
+                    {passwordTouched && passwordError && <div className={classNames(styles.passwordError)} >{passwordError}</div>}
                     <div className={classNames(styles.forgotPassword)}>Forgot password?</div>
                 </div>
                 <div>
                     <Button
                         type={ButtonType.Primary}
                         title={"Sign In"}
-                        onClick={() => {
-                        console.log("primary");
-                        }}
+                        onClick={onSignIn}
                         className={styles.signInBtn}
                         disabled={false}
                     />

@@ -7,6 +7,8 @@ import styles from "./Header.module.css";
 import classNames from "classnames"
 
 import { PathNames } from '../../Pages/Router/Router';
+import { useDispatch, useSelector } from "react-redux";
+
 
 import InputSearch from "../InputSearch";
 import {BookstoreIcon,
@@ -14,9 +16,15 @@ import {BookstoreIcon,
         FavoriteIcon,
         UserIcon,
         } from '../../../src/Assets/Icons';
+import AuthSelectors from "../../Redux/Selectors/authSelectors";
+
 
 const Header = () => {
     const location = useLocation();
+    const dispatch = useDispatch();
+
+    const currentUser = useSelector(AuthSelectors.getCurrentUser);
+
 
     const [value, setValue] = useState<string>("");
     const onChange = (inputValue: string) => {
@@ -43,14 +51,13 @@ const Header = () => {
             
                 
                 <CartIcon/>
-                <NavLink
+                {currentUser ? (<UserIcon/>) : (<NavLink
             to={PathNames.SignIn}
             className={classNames({
-                [styles.activeLink]: location.pathname === PathNames.SignIn,
-            })}
-            >
+                [styles.activeLink]: location.pathname === PathNames.SignIn,            })}>
                 <UserIcon/>
             </NavLink>
+            )}
             </div>
             </nav>
 

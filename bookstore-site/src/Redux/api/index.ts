@@ -1,5 +1,9 @@
 import { create } from 'apisauce';
-// import { ActivationParams, UserActionPayload } from "../../../src/Utils/globalTypes"
+import { 
+  ActivationParams,
+  AuthUserPayload,
+  UserActionPayload 
+} from "../../../src/Utils/globalTypes"
 import { PER_PAGE } from "../../Utils";
 
 const API = create({
@@ -25,6 +29,44 @@ const API = create({
 
     const getSearchedPosts = (title_contains: string, _start: number) => {
         return API.get("/search/{query}", { title_contains, _limit: PER_PAGE, _start });
-      };
+    };
+    
+    const createNewUser = (userData: UserActionPayload) => {
+      return API.post("/auth/users/", userData);
+    };
 
-export default { getPostsList, getPost, getSearchedPosts };
+    const activateNewUser = (params: ActivationParams) => {
+      return API.post("/auth/users/activation/", params);
+    };
+
+    const authUser = (params: AuthUserPayload) => {
+      return API.post("/auth/jwt/create/", params);
+    };
+    
+    const getCurrentUser = (token: string) => {
+      return API.get(
+        "/auth/users/me/",
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    };
+
+    const verifyToken = (token: string) => {
+      return API.post("/auth/jwt/verify/", { token });
+    };
+
+    const refreshToken = (refresh: string) => {
+      return API.post("/auth/jwt/refresh/", { refresh });
+    };
+
+export default { 
+  getPostsList, 
+  getPost, 
+  getSearchedPosts,
+  createNewUser,
+  activateNewUser,
+  authUser,
+  getCurrentUser,
+  verifyToken,
+  refreshToken,
+};

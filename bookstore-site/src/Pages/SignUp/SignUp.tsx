@@ -1,5 +1,7 @@
 import React, {FC, useState, useEffect} from "react";
 import {Link} from 'react-router-dom';
+import { useDispatch } from "react-redux";
+
 
 // @ts-ignore
 import styles from './SignUp.module.css'
@@ -10,9 +12,11 @@ import Label from "../../Components/Label";
 import { PathNames } from "../Router/Router";
 import Input from "../../Components/Input";
 import {IconArrowLeft} from '../../../src/Assets/Icons';
+import { createNewUser } from "../../Redux/Reducers/authReducer";
 
 
-const validateMail = (email: string) => {
+
+const validateEmail = (email: string) => {
     return String(email)
     .toLowerCase()
     .match(
@@ -21,13 +25,21 @@ const validateMail = (email: string) => {
 };
 
 const SignUp = () => {
-    const [mail, setMail] = useState("");
-    const [mailError, setMailError] = useState("");
-    const [mailTouch, setMailTouch] = useState(false);
+    const dispatch = useDispatch()
+    const [name, setName] = useState("");
+
+
+    const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState("");
+    const [emailTouch, setEmailTouch] = useState(false);
 
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [passwordTouch, setPasswordTouch] = useState(false);
+
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [confirmPasswordError, setConfirmPasswordError] = useState("");
+    const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
 
 
     const [value, setValue] = useState<string>("");
@@ -35,19 +47,19 @@ const SignUp = () => {
     setValue(inputValue);
     };
 
-    const onChangeMail = (value: string) => {
-        setMail(value);
-        setMailTouch(true);
-    };
+    // const onChangeEmail = (value: string) => {
+    //     setEmail(value);
+    //     setEmailTouch(true);
+    // };
 
 
     useEffect(() => {
-        if (mailTouch && !validateMail(mail)) {
-        setMailError("Set correct email");
+        if (emailTouch && !validateEmail(email)) {
+        setEmailError("Set correct email");
         } else {
-        setMailError("");
+        setEmailError("");
         }
-    }, [mailTouch, mail]);
+    }, [emailTouch, email]);
 
     useEffect(() => {
         if (passwordTouch && password.length < 8) {
@@ -57,6 +69,21 @@ const SignUp = () => {
         }
     }, [passwordTouch, password]);
 
+    useEffect(() => {
+        if (confirmPasswordTouched && confirmPassword.length < 8) {
+            setConfirmPasswordError("Enter more than 8 characters");
+        } else if (confirmPasswordTouched && confirmPassword != password) {
+            setConfirmPasswordError(
+            "Confirm validation failed. Password does not match"
+        );
+        } else {
+            setConfirmPasswordError("");
+        }
+    }, [confirmPasswordTouched, confirmPassword, password]);
+    
+    const onSignUp = ()=>{
+        dispatch(createNewUser({username: name, email, password}))
+    };
 
     return (
         <div className={classNames(styles.container)}>
@@ -84,21 +111,19 @@ const SignUp = () => {
                         <div>
                         <Input 
                             placeholder={"Name"}
-                            onChange={setMail}
-                            value={mail}
-                            error={!!mailError}
+                            onChange={setName}
+                            value={name}
                         />
-                        {mailTouch && mailError && <div>{mailError}</div>}
                     </div>
                     <div className={classNames(styles.block__Text)}>Email</div>
                         <div>
                         <Input 
                             placeholder={"Your email"}
-                            onChange={setMail}
-                            value={mail}
-                            error={!!mailError}
+                            onChange={setEmail}
+                            value={email}
+                            error={!!emailError}
                         />
-                        {mailTouch && mailError && <div>{mailError}</div>}
+                        {emailTouch && emailError && <div>{emailError}</div>}
                     </div>
                 <div>
                     <div className={classNames(styles.block__Text)}>Password</div>
@@ -114,20 +139,17 @@ const SignUp = () => {
                     <div className={classNames(styles.block__Text)}>Confirm password</div>
                     <Input
                     placeholder={"Confirm password"}
-                    onChange={setPassword}
-                    value={password}
-                    error={!!passwordError}
+                    onChange={setConfirmPassword}
+                    value={confirmPassword}
+                    error={!!confirmPasswordError}
                     />
-                    {passwordTouch && passwordError && <div className={classNames(styles.passwordError)} >{passwordError}</div>}
-                    <div className={classNames(styles.forgotPassword)}>Forgot password?</div>
+                    {confirmPasswordTouched && confirmPasswordError && <div className={classNames(styles.passwordError)} >{confirmPasswordError}</div>}
                 </div>
                 <div>
                     <Button
                         type={ButtonType.Primary}
                         title={"Sign Up"}
-                        onClick={() => {
-                        console.log("primary");
-                        }}
+                        onClick={onSignUp}
                         className={styles.signInBtn}
                         disabled={false}
                     />
