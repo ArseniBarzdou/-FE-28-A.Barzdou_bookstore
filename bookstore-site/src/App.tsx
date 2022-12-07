@@ -22,7 +22,7 @@ import Listing from './Pages/Listing';
 import PagesWrapper from './Pages/PagesWrapper';
 
 const App = () => {
-  const cardsList = useSelector(PostsSelectors.getCardsList);
+  // const cardsList = useSelector(PostsSelectors.getCardsList);
 
   const dispatch = useDispatch();
 

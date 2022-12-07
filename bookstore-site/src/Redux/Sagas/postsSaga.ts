@@ -2,11 +2,14 @@ import { all, call, takeLatest, put } from "redux-saga/effects";
 
 import {
     getPosts,
+    setSinglePost,
+    getSinglePost,
     setCardsList,
     searchForPosts,
     setSearchedPosts,
     setSearchedPostsCount,
     setSearchPostsLoading,
+    setSinglePostLoading
 } from "../Reducers/PostReducers";
 import Api from "../api";
 import { GetPostsPayload, SearchPostsPayload } from "../../Utils";
@@ -29,6 +32,18 @@ function* getPostsWorker() {
     console.log(problem);
 }
 }
+
+function* getSinglePostWorker(action: PayloadAction<string>) {
+  yield put(setSinglePostLoading(true));
+  const { data, status, problem } = yield call(Api.getPost, action.payload);
+  if (status === 200 && data) {
+    yield put(setSinglePost(data));
+  } else {
+    console.log(problem);
+  }
+  yield put(setSinglePostLoading(false));
+}
+
 function* getSearchedPostsWorker(action: PayloadAction<SearchPostsPayload>) {
     const { _start, isOverwrite, title_contains } = action.payload;
   
@@ -53,6 +68,6 @@ export default function* postsSagaWatcher() {
     takeLatest(getPosts, getPostsWorker),
     takeLatest(searchForPosts, getSearchedPostsWorker),
 
-    // takeLatest(getSinglePost, getSinglePostWorker),
+    takeLatest(getSinglePost, getSinglePostWorker),
 ]);
 }

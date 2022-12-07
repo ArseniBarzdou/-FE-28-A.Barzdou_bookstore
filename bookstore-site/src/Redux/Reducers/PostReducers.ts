@@ -6,6 +6,8 @@ import {
   SearchPostsPayload,
   SetSearchedPostsPayload
 } from "../../Utils/globalTypes";
+// import {BookProps} from "../../Components/Book/types";
+
 
 type PostStateType = {
   selectedPost: CardPostType | null;
@@ -40,7 +42,7 @@ const INITIAL_STATE: PostStateType = {
 };
 
 const postsReducer = createSlice({
-  name: "posts",
+  name: "books",
   initialState: INITIAL_STATE,
   reducers: {
     getPosts: (state, action: PayloadAction<undefined>) => {},

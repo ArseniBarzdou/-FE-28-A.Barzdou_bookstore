@@ -1,7 +1,9 @@
-import React, { FC,useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
+import { useParams } from "react-router-dom";
+
 
 //@ts-ignore
 
@@ -13,7 +15,7 @@ import Subscribe from '../../Components/Subscribe';
 import PopularBooks from '../../Components/PopularBooks';
 import Book from '../../Components/Book';
 import PostsSelectors from "../../Redux/Selectors/postSelectors";
-import { getPosts } from '../../Redux/Reducers/PostReducers';
+import { getSinglePost } from '../../Redux/Reducers/PostReducers';
 import CardList from '../../Components/CardList';
 import { CardListType, LikeStatus, BookProps } from "../../Utils/globalTypes";
 import Label from '../../Components/Label';
@@ -21,21 +23,26 @@ import Label from '../../Components/Label';
 const BookCard = () => {
     //   const { theme, onChangeTheme } = useThemeContext();
     //   const isDarkTheme = theme === Theme.Dark;
-        // const post = useSelector(postSelectors.getSinglePost);
-        const cardsList = useSelector(PostsSelectors.getCardsList);
-        const dispatch = useDispatch();
-    
+    const params = useParams();
+
+    const book = useSelector(PostsSelectors.getSinglePost);
+    const cardsList = useSelector(PostsSelectors.getCardsList);
+    const dispatch = useDispatch();
+    const { isbn13 } = params;
+
         
-        useEffect(() => {
-            dispatch(getPosts());
-        }, []);
-    
+    useEffect(() => {
+        if (isbn13) {
+            dispatch(getSinglePost(isbn13));
+        }
+    }, [isbn13]);
+
         return (
             <div>
             <div>
 
                 <div>
-                {/* <Book post={post}/> */}
+                <Book post={book}/>
                 </div>
                 <div>
                     <Subscribe/>

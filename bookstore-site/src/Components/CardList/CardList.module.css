@@ -29,12 +29,3 @@
 .mediumCardListWrapper :nth-child(even) {
     margin-right: 0;
 }
-
-/* .rightSideList {
-    display: flex;
-    flex-direction: column;
-} */
-
-.darkTheme {
-    background-color: #313037;
-}

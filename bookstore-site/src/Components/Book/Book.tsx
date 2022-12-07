@@ -12,18 +12,20 @@ import Button, { ButtonType } from "../Button";
 import { FacebookIcon, TwitterIcon, DotsIcon } from "../../Assets/Icons";
 import { PathNames } from "../../Pages/Router/Router";
 import {IconArrowLeft} from '../../../src/Assets/Icons';
-// import { BookProps } from './types';
-import { CardListType, LikeStatus, BookProps } from "../../Utils/globalTypes";
+import { BookProps } from './types';
+// import { CardListType, LikeStatus, BookProps } from "../../Utils/globalTypes";
 
 
 
 
 
 const Book: FC<BookProps> = ({ post }) => {
-    const { image, title,subtitle, price, rating, isbn13, authors, year, publisher, pdf} = post;
+    const { price, image, title,subtitle, rating, isbn13, authors, year, publisher, url} = post || {};
 
     const dispatch = useDispatch();
-    return(
+    
+    return (
+        <>
         <div className={classNames(styles.bookContainer)}>
             <div> 
                 <Link to={PathNames.Home}>
@@ -67,11 +69,12 @@ const Book: FC<BookProps> = ({ post }) => {
                     className={styles.signInBtn}
                     disabled={false}/>
                 <div>
-                    <a href={pdf}>Preview Book</a>
+                    <a href={url}>Preview Book</a>
                 </div>
             </div>
             </div>
         </div>
+        </>
     );
 };
 

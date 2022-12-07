@@ -8,10 +8,10 @@ export type BookType = {
     publisher: string;
     year: number;
     rating: number;
-    pdf:string;
+    url:string;
     // likeStatus?: LikeStatus | null;
 };
 
 export type BookProps = {
-    post: BookType;
+    post: BookType ;
   };

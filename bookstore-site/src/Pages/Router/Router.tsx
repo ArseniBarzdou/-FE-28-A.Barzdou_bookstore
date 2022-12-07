@@ -34,7 +34,7 @@ const Router = () => {
             <Route path={PathNames.BookCard} element={<BookCard />} />
 
             </Route>
-            <Route path={'*'} element={<Navigate to={PathNames.BookCard}/>} />
+            <Route path={'*'} element={<Navigate to={PathNames.Home}/>} />
 
         </Routes>
         </BrowserRouter>
