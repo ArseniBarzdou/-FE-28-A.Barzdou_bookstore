@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import classNames from "classnames";
 //@ts-ignore
 
+import styles from "./Search.module.css";
 import SearchList from "../../Components/SearchList";
-import classNames from "classnames";
-// import styles from "../../Pages/Search/Search.module.css";
 import PostsSelectors from "../../Redux/Selectors/postSelectors";
 // import processingAnimation from "../../lotties/processing.json";
 import { PathNames } from "../Router/Router";
@@ -33,9 +33,9 @@ const Search = () => {
 
     const [page, setPage] = useState(DEFAULT_PAGE_NUMBER);
 
-    // const searchString = useSelector(
-    //   PostsSelectors.getSearchString
-    // );
+    const searchString = useSelector(
+      PostsSelectors.getSearchString
+    );
     // !! для поиска по буквенно
     console.log(searchedPosts)
     useEffect(() => {
@@ -45,9 +45,9 @@ const Search = () => {
     }, [searchElement]);
 
     useEffect(() => {
-        const _start = (page - 1) * PER_PAGE;
+        const offset = (page - 1) * PER_PAGE;
         dispatch(
-        searchForPosts({ title_contains: searchElement, _start, isOverwrite: false })
+        searchForPosts({ search: searchElement, offset, isOverwrite: false })
         );
     }, [page]);
 
@@ -56,32 +56,18 @@ const Search = () => {
     };
     return (
         <div
-        // className={classNames(styles.searchPageWrapper)}
-        >
-        <div 
-        // className={styles.searchListTitle}
-        >
+        className={classNames(styles.searchPageWrapper)}>
+        <div className={styles.searchListTitle}>
             Search results " {searchElement} "
-        </div>
-        {!isSearchPostsLoading ? (
+            </div>
             <div>
-            <SearchList
+                <SearchList
                 searchedPosts={searchedPosts}
                 count={searchedPostsCount}
                 onScroll={onScroll}
-            />
+                />
             </div>
-        ):(
-            <div 
-            // className={styles.lottieContainer}
-            >
-            {/* <Lottie
-                className={styles.lottieContainerAnimation}
-                animationData={processingAnimation}
-                loop={true}
-            /> */}
-            </div>
-        )}
+            
         </div>
     );
 };

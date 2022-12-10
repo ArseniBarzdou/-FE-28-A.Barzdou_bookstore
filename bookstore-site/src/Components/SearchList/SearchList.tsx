@@ -9,13 +9,13 @@ import EmptyState from "../EmptyState";
 
 const SearchList: FC<SearchListProps> = ({ searchedPosts, count, onScroll }) => {
     return searchedPosts && searchedPosts.length > 0 ? (
-        <div className={classNames(styles.listWrapper)}>
+        <div className={classNames(styles.searchListWrapper)}>
         {searchedPosts.map(post => {
             return <CardPost post={post} key={post.isbn13}/>;
         })}
         </div>
     ) : (
         <EmptyState/>
-    );;
+    );
 };
 export default SearchList;

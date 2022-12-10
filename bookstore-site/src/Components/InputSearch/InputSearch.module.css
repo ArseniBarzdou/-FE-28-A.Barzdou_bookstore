@@ -4,7 +4,7 @@ input {padding-left: 20px;}
     border-radius: 2px;
     border: 2px solid transparent;
     outline: none;
-    color: #ffffff50;
+    color: #838383;
     width: 530px;
     font-size: 16px;
     font-weight:400;
@@ -22,11 +22,6 @@ input {padding-left: 20px;}
     border-color: #fd3419;
 }
 
-.inputSearch__Wrapper{
-    border: 2px solid #E7E7E7;
-    display: flex;
-    align-items: center;
-}
 
 .icons{
     padding: 18px;

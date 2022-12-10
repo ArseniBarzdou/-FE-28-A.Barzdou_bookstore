@@ -1,0 +1,8 @@
+.bookContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 100px;
+    margin: auto 0 ;
+}

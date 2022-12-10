@@ -8,6 +8,7 @@ export type BookType = {
     publisher: string;
     year: number;
     rating: number;
+    pdf:string;
     url:string;
     // likeStatus?: LikeStatus | null;
 };

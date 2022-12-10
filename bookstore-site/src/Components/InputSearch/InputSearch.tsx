@@ -21,11 +21,8 @@ const InputSearch: FC<InputProps> = ({value, onChange, placeholder='', disabled,
     onChange(evt.target.value)
 }
     return(
-        <div className={classNames(styles.inputSearch__Wrapper )}>
+        <div>
         <input type="text" onChange={onInputChange} value={value} placeholder={placeholder} className={`${styles.input} ${ error ? styles.error : ''}`} disabled={disabled}/>
-            <div className={classNames(styles.icons)}>
-                <IconSearch />
-            </div>
         </div>
     )
 }

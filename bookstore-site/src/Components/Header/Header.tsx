@@ -1,5 +1,5 @@
 import React, { useState, useEffect  } from 'react';
-import { useLocation, NavLink, Link } from 'react-router-dom';
+import { useLocation, NavLink, Link, useNavigate } from 'react-router-dom';
 
 // @ts-ignore
 
@@ -8,20 +8,23 @@ import classNames from "classnames"
 
 import { PathNames } from '../../Pages/Router/Router';
 import { useDispatch, useSelector } from "react-redux";
+import { IconSearch } from '../../../src/Assets/Icons';
 
 
-import InputSearch from "../InputSearch";
 import {BookstoreIcon,
         CartIcon,
         FavoriteIcon,
         UserIcon,
         } from '../../../src/Assets/Icons';
 import AuthSelectors from "../../Redux/Selectors/authSelectors";
+import { searchForPosts } from "../../Redux/Reducers/PostReducers"
+import InputSearch from '../InputSearch';
 
-
-const Header = () => {
+const Header = ({ onClick, isOpened }: any) => {
     const location = useLocation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
     const currentUser = useSelector(AuthSelectors.getCurrentUser);
 
@@ -31,6 +34,21 @@ const Header = () => {
         setValue(inputValue);
     };
 
+    const onSearch = () => {
+        if (value.length > 0) {
+           dispatch(
+                searchForPosts({
+                  search: value,
+                  offset: 0,
+                  isOverwrite: true
+                })
+              );
+          navigate(PathNames.Search, { state: { searchElement: value } });
+          setValue("");
+          onClick();
+        }
+      };
+    
 
     return (
         <div className={classNames(styles.header)}>
@@ -41,12 +59,17 @@ const Header = () => {
                 </Link>
 
             </div>
-            <InputSearch  
+            <div className={classNames(styles.inputSearch__Wrapper )}>
+            <InputSearch
             placeholder={"Search..."}
             onChange={onChange}
-            value={value}/>
-            <div className={classNames(styles.icons)}>
             
+            value={value}/>
+            <div className={classNames(styles.iconsSearch)} onClick={onSearch}>
+                <IconSearch />
+            </div>
+            </div>
+            <div className={classNames(styles.icons)}>
             <FavoriteIcon/>
             
                 

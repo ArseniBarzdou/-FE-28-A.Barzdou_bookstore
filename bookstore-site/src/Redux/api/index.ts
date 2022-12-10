@@ -23,12 +23,16 @@ const API = create({
     // return API.post('/auth/users/activation/', params);
     // };
 
+    const getPostsCount = () => {
+      return API.get("search/game");
+    };
+
     const getPost = (isbn13: string) => {
     return API.get(`/books/${isbn13}`);
     };
 
-    const getSearchedPosts = (title_contains: string, _start: number) => {
-        return API.get("/search/{query}", { title_contains, _limit: PER_PAGE, _start });
+    const getSearchedPosts = (search: string, offset: number) => {
+        return API.get("/search/{query}", { search, limit: 10, offset });
     };
     
     const createNewUser = (userData: UserActionPayload) => {
@@ -64,6 +68,7 @@ export default {
   getPost, 
   getSearchedPosts,
   createNewUser,
+  getPostsCount,
   activateNewUser,
   authUser,
   getCurrentUser,

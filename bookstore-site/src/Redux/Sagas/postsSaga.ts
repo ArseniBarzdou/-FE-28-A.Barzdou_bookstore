@@ -9,7 +9,10 @@ import {
     setSearchedPosts,
     setSearchedPostsCount,
     setSearchPostsLoading,
-    setSinglePostLoading
+    setSinglePostLoading,
+    setCardsCount,
+    getPostsCount,
+
 } from "../Reducers/PostReducers";
 import Api from "../api";
 import { GetPostsPayload, SearchPostsPayload } from "../../Utils";
@@ -22,15 +25,22 @@ function* getPostsWorker() {
 
     const { data, status, problem } = yield call(Api.getPostsList);
 
-
-
-
-    
     if (status === 200 && data) {
     yield put(setCardsList(data.books));
     } else {
     console.log(problem);
 }
+  yield getPostsCountWorker();
+}
+
+function* getPostsCountWorker() {
+  const { data, status, problem } = yield call(Api.getPostsCount);
+
+  if (status === 200 && data) {
+    yield put(setCardsCount(data));
+  } else {
+    console.log(problem);
+  }
 }
 
 function* getSinglePostWorker(action: PayloadAction<string>) {
@@ -45,17 +55,17 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
 }
 
 function* getSearchedPostsWorker(action: PayloadAction<SearchPostsPayload>) {
-    const { _start, isOverwrite, title_contains } = action.payload;
+    const { offset, isOverwrite, search } = action.payload;
   
     yield put(setSearchPostsLoading(true));
     const { data, status, problem } = yield call(
       Api.getSearchedPosts,
-      title_contains,
-      _start
+      search,
+      offset
     );
     if (status === 200 && data) {
       // yield put(setSearchedPostsCount(data.count));
-      yield put(setSearchedPosts({ data: data, isOverwrite }));
+      yield put(setSearchedPosts({ data: data.books, isOverwrite }));
     } else {
       console.log("Error getting search posts", problem);
     }
@@ -67,6 +77,7 @@ export default function* postsSagaWatcher() {
     yield all([
     takeLatest(getPosts, getPostsWorker),
     takeLatest(searchForPosts, getSearchedPostsWorker),
+    takeLatest(getPostsCount, getPostsCountWorker),
 
     takeLatest(getSinglePost, getSinglePostWorker),
 ]);

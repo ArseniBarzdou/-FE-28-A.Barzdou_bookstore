@@ -21,3 +21,14 @@ nav {
     gap: 56px;
     align-items: center;
 }
+
+
+.inputSearch__Wrapper{
+    border: 2px solid #E7E7E7;
+    display: flex;
+    align-items: center;
+}
+
+.iconsSearch{
+    padding: 18px;
+}

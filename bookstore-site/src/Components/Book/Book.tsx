@@ -20,19 +20,19 @@ import { BookProps } from './types';
 
 
 const Book: FC<BookProps> = ({ post }) => {
-    const { price, image, title,subtitle, rating, isbn13, authors, year, publisher, url} = post || {};
+    const { price, image, title,subtitle, rating, isbn13, authors, year, publisher, pdf, url} = post || {};
 
     const dispatch = useDispatch();
     
     return (
         <>
-        <div className={classNames(styles.bookContainer)}>
             <div> 
                 <Link to={PathNames.Home}>
                     <IconArrowLeft/>
                 </Link>
-            <div className={styles.bookTitle}>{title}</div>
             </div>
+        <div className={classNames(styles.bookContainer)}>
+            <div className={styles.bookTitle}>{title}</div>
             <div className={classNames(styles.bookInfo)}>
             <div className={styles.leftSideList}>  
                 <div className={classNames(styles.imgWrapper)}>
@@ -69,7 +69,7 @@ const Book: FC<BookProps> = ({ post }) => {
                     className={styles.signInBtn}
                     disabled={false}/>
                 <div>
-                    <a href={url}>Preview Book</a>
+                    <a href={pdf}>Preview Book</a>
                 </div>
             </div>
             </div>

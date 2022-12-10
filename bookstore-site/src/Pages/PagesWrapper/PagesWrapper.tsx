@@ -37,7 +37,7 @@ const PagesWrapper = () => {
     <div
       className={classNames(styles.app )}
     >
-        <Header />
+        <Header  />
 
      {/* <Outlet/> */}
       {location.pathname === PathNames.Home ? <Listing/>:<Outlet/>}

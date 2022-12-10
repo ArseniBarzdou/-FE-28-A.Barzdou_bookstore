@@ -23,6 +23,7 @@ type PostStateType = {
   searchedPosts: CardListType;
   searchString: string;
   searchedPostsCount: number; 
+  cardsCount: number;
 };
 
 const INITIAL_STATE: PostStateType = {
@@ -38,7 +39,9 @@ const INITIAL_STATE: PostStateType = {
   isPostLoading: false,
   searchedPosts: [],
   searchString: "",
-  searchedPostsCount: 0
+  searchedPostsCount: 0,
+  cardsCount: 0,
+
 };
 
 const postsReducer = createSlice({
@@ -71,6 +74,14 @@ const postsReducer = createSlice({
     setCardsList: (state, action: PayloadAction<CardListType>) => {
       state.cardsList = action.payload;
     },
+
+    getPostsCount: (state, action: PayloadAction<undefined>) => {},
+
+
+    setCardsCount: (state, action: PayloadAction<number>) => {
+      state.cardsCount = action.payload;
+    },
+
     setFavouritePost: (state, action: PayloadAction<CardPostType>) => {
       const { isbn13 } = action.payload;
       const postIndex = state.favouritePostsList.findIndex(
@@ -145,6 +156,8 @@ export const {
   setActiveTab,
   setCardsList,
   setFavouritePost,
+  getPostsCount,
+  setCardsCount,
   // setLikeStatus,
   getSinglePost,
   setSinglePost,

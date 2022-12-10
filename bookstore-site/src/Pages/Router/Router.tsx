@@ -5,6 +5,7 @@ import Listing from "../Listing";
 import PagesWrapper from "../PagesWrapper/PagesWrapper";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
+import Search from "../Search";
 // import SearchList from "../../Components/SearchList";
 
 
@@ -29,7 +30,7 @@ const Router = () => {
         <Routes>
             <Route path={PathNames.Home} element={<PagesWrapper />}>
             <Route path={PathNames.SignIn} element={<SignIn />} />
-            {/* <Route path={PathNames.Search} element={<SearchList />} /> */}
+            <Route path={PathNames.Search} element={<Search />} />
             <Route path={PathNames.SignUp} element={<SignUp />} />
             <Route path={PathNames.BookCard} element={<BookCard />} />
 

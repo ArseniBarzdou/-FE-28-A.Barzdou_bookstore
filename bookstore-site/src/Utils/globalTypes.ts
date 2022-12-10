@@ -78,14 +78,13 @@ export type User = {
 };
 
 export type GetPostsPayload = {
-    _start: number;
-    _sort?: string;
-    publishedAt_gt?: string;
+    offset: number;
+    ordering: string;
 };
 
 export type SearchPostsPayload = {
-    title_contains: string;
-    _start: number;
+    search: string;
+    offset: number;
     isOverwrite: boolean;
 };
 

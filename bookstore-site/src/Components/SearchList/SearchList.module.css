@@ -1,0 +1,22 @@
+
+.searchListWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 100px;
+    margin: 0 auto  ;
+    max-width: 1120px;
+    flex-wrap: wrap;
+
+
+}
+
+.searchListCardWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
