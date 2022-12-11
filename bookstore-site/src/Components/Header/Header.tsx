@@ -70,16 +70,19 @@ const Header = ({ onClick, isOpened }: any) => {
             </div>
             </div>
             <div className={classNames(styles.icons)}>
-            <FavoriteIcon/>
-            
+                <NavLink
+                to={PathNames.FavoriteCard}>
+                    <FavoriteIcon/>
+                </NavLink>
                 
                 <CartIcon/>
+                
                 {currentUser ? (<UserIcon/>) : (<NavLink
-            to={PathNames.SignIn}
-            className={classNames({
-                [styles.activeLink]: location.pathname === PathNames.SignIn,            })}>
-                <UserIcon/>
-            </NavLink>
+                    to={PathNames.SignIn}
+                    className={classNames({
+                    [styles.activeLink]: location.pathname === PathNames.SignIn,            })}>
+                    <UserIcon/>
+                </NavLink>
             )}
             </div>
             </nav>

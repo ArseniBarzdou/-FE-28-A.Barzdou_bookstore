@@ -10,9 +10,9 @@ import { TabsProps } from "./types";
 
 
 export const TABS_NAME = [
-    { key: "all",tabTitle: "All" },
-    { key: "mf",tabTitle: "My Favorite"},
-    { key: "p",tabTitle: "Popular"},
+    { key: "all",tabTitle: "Description   " },
+    { key: "mf",tabTitle: "Authors"},
+    { key: "p",tabTitle: "Reviews"},
 ];
 
 const Tabs : FC<TabsProps> = ({ tabs, onClick, activeTab }) => {

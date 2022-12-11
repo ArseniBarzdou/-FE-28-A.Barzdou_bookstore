@@ -1,10 +1,12 @@
 
+
+
 .searchListWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    margin-bottom: 100px;
+    /* margin-bottom: 100px; */
     margin: 0 auto  ;
     max-width: 1120px;
     flex-wrap: wrap;

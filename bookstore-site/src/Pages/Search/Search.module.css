@@ -1,3 +1,5 @@
+
+
 .searchPageWrapper{
   margin-bottom: 168px;
   height: 100%;
@@ -6,6 +8,9 @@
 
 
 .searchListTitle {
+  display: flex;
+  margin: 0 auto  ;
+  max-width: 1120px;
   font-style: normal;
   font-weight: 700;
   font-size: 56px;

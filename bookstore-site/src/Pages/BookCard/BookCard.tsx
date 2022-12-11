@@ -46,9 +46,9 @@ const BookCard = () => {
                 </div>
                 <div>
                     <Subscribe/>
-                    <div className={styles.labelWrapper}>
-                    <Label  title={"Similar books"}></Label>
-                    </div>
+                        <div className={styles.labelWrapper}>
+                            <Label  title={"Similar books"}></Label>
+                        </div>
                     <PopularBooks cardList={cardsList}/>
                 </div>
             </div>

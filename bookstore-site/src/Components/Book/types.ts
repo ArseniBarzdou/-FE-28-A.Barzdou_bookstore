@@ -10,6 +10,8 @@ export type BookType = {
     rating: number;
     pdf:string;
     url:string;
+    desc:string;
+    
     // likeStatus?: LikeStatus | null;
 };
 

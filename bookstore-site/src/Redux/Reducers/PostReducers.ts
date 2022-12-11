@@ -114,34 +114,11 @@ const postsReducer = createSlice({
     },
     searchForPosts: (state, action: PayloadAction<SearchPostsPayload>) => {
       // !! state.searchString = action.payload; для по буквенного поиска
-    }
+    },
+
+    getMyFavoriteList: (state, action: PayloadAction<undefined>) => {},
 
 
-    // setLikeStatus: (
-    //   state,
-    //   action: PayloadAction<{ status: LikeStatus; isbn13: number }>
-    // ) => {
-    //   const post = state.cardsList.find(c => c.isbn13 === action.payload.isbn13);
-    //   const postIndex = state.cardsList.findIndex(
-    //     c => c.isbn13 === action.payload.isbn13
-    //   );
-    //   //тут мы просто доп проверяем, нашел ли у нас find в массиве общих постов нужный нам
-    //   if (post && postIndex !== -1) {
-    //     //Если уже стоит лайк или дизлайк - убрать его и поставить null
-    //     if (post.likeStatus === action.payload.status) {
-    //       state.cardsList.splice(postIndex, 1, {
-    //         ...post,
-    //         likeStatus: null
-    //       });
-    //     } else {
-    //       //Иначе дать ему актуальный статус
-    //       state.cardsList.splice(postIndex, 1, {
-    //         ...post,
-    //         likeStatus: action.payload.status
-    //       });
-    //     }
-    //   }
-    // }
   }
 });
 
@@ -165,6 +142,7 @@ export const {
   setSearchPostsLoading,
   searchForPosts,
   setSearchedPosts,
-  setSearchedPostsCount
+  setSearchedPostsCount,
+  getMyFavoriteList
   
 } = postsReducer.actions;

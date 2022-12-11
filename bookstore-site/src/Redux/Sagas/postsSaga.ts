@@ -64,7 +64,7 @@ function* getSearchedPostsWorker(action: PayloadAction<SearchPostsPayload>) {
       offset
     );
     if (status === 200 && data) {
-      // yield put(setSearchedPostsCount(data.count));
+      yield put(setSearchedPostsCount(data.query));
       yield put(setSearchedPosts({ data: data.books, isOverwrite }));
     } else {
       console.log("Error getting search posts", problem);

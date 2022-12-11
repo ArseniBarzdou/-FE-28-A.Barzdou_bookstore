@@ -1,8 +1,115 @@
-.bookContainer{
+/* .bookContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 100px;
+    max-width: 1120px;
+    margin: 0 auto  ;
+}; */
+
+.bookWrapper{
+    display: flex;
+    height: 472px;
+    gap: 128px;
+    max-width: 1120px;
+    margin: 0  auto;
+};
+
+.leftSideList{
+    width: 544px;
+    background-color: #FEE9E2;
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 100px;
-    margin: auto 0 ;
+    margin-bottom: 20px;
+};
+
+.rightSideList{
+    width: 448px;
 }
+
+.infoRightSide{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infoText{
+    color: #A8A8A8;
+    line-height: 32px;
+}
+
+.infoBooksText{
+    color: #161616;
+}
+
+.infoButtonSide{
+    display: block;
+    flex-direction:row;
+    margin-top: 59px;
+    margin-bottom: 40px;
+}
+
+.descWrapper{
+    display: flex;
+    max-width: 1120px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.infoDescription{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 32px;
+    color: #313037;
+    margin: 49px 0 51px 0;
+}
+
+.infoIcons{
+    display: flex;
+    width: 120px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.infoIcons  :hover{
+    fill: #313037;
+
+}
+
+.cartBtn{
+    width: 448px;
+    height: 56px;
+    background: #313037;
+    color: #ffffff;
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.prevBtn{
+    width: 448px;
+    height: 56px;
+    background: #ffffff;
+    
+}
+
+
+
+
+
+
+
+.favouritePost svg {
+    cursor: pointer;
+
+}
+
+.favouritePost svg path {
+    cursor: pointer;
+
+    fill: #ff0000;
+  }

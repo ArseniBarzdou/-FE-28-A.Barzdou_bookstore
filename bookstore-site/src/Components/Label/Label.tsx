@@ -11,8 +11,9 @@ type LabelProps = {
 const Label: FC<LabelProps> = ({ title  }: any) => {
     
     return (
-        <div>
-    <div className={classNames(styles.label)}>{title}</div>
-    </div>)
+    <div >
+        <div className={classNames(styles.label)}>{title}</div>
+    </div>
+    )
 };
 export default Label

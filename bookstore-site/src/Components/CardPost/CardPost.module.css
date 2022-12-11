@@ -23,10 +23,13 @@
 
 .smallPost {
     width: 352px;
+    height: 454px;
+
     padding: 48px 16px 0 1px ;
     /* margin-right: 32px; */
     flex-direction: column;
     flex-wrap: wrap;
+    margin-bottom: 72px;
 }
 
 
@@ -87,11 +90,14 @@
     font-size: 16px;
     line-height: 24px;
     color: #A8A8A8;
+    height: 24px;
 }
 
 .infoWrapper{
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
+    height: 50px;
 }
 
 .infoPrice{
@@ -103,24 +109,8 @@
 }
 
 
-.date {
-    color: rgba(141, 142, 151, 1);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 8px;
-}
-.title {
-    color: rgba(49, 48, 55, 1);
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 28px;
-    cursor: pointer;
-}
-.title:hover{
-    color: #2231AA;
-    transition: 0.2s;
-}
+
+
 .largePost .title {
     font-weight: 700;
     font-size: 32px;
@@ -141,9 +131,7 @@
     width: 352px;
 }
 
-.largePost .iconsWrapper {
-    width: 100%;
-}
+
 
 .iconsThumb{
     display:flex;
@@ -159,12 +147,7 @@
 
 }
 
-.likeStatusButton {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    width: 42px;
-}
+
 
 .iconsOptions{
     display: block;

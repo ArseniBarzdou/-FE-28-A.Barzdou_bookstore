@@ -59,7 +59,11 @@ const Search = () => {
         className={classNames(styles.searchPageWrapper)}>
         <div className={styles.searchListTitle}>
             Search results " {searchElement} "
-            </div>
+        </div>
+        <div className={styles.searchCount}>
+            Found {searchedPostsCount} books
+        </div>
+        
             <div>
                 <SearchList
                 searchedPosts={searchedPosts}
