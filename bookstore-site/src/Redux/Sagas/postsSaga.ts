@@ -27,9 +27,9 @@ function* getPostsWorker(action: PayloadAction<GetPostsPayload>) {
 
     if (status === 200 && data) {
       yield put(setCardsList(data.books));
-            if (data.length >= 12) {
+            // if (data.length >= 12) {
         yield getPostsCountWorker();
-      }
+      // }
     } else {
     console.log(problem);
 }

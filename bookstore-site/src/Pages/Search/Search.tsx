@@ -65,41 +65,40 @@ const Search = () => {
         setPage(prevPage => prevPage + 1);
     };
     return (
-        <div
-        className={classNames(styles.searchPageWrapper)}>
-        <div className={styles.searchListTitle}>
-            Search results " {searchElement} "
-        </div>
-        <div className={styles.searchCount}>
-            Found {searchedPostsCount} books
-        </div>
-        
-            <div>
-                <SearchList
-                searchedPosts={searchedPosts}
-                count={searchedPostsCount}
-                onScroll={onScroll}
-                />
-                <ReactPaginate
-                    pageCount={pagesCount}
-                    onPageChange={onPageChange}
-                    containerClassName={styles.pagesContainer}
-                    pageClassName={styles.pageNumber}
-                    breakClassName={styles.pageNumber}
-                    breakLinkClassName={styles.linkPage}
-                    activeLinkClassName={styles.linkPage}
-                    pageLinkClassName={styles.linkPage}
-                    activeClassName={styles.activePageNumber}
-                    nextClassName={classNames(styles.pageNumber, styles.arrowButton, {
-                    [styles.availableToClickButton]: page !== pagesCount
-                    })}
-                    previousClassName={classNames(styles.pageNumber, styles.arrowButton, {
-                    [styles.availableToClickButton]: page !== 1
-                    })}
-                    previousLinkClassName={styles.linkPage}
-                    nextLinkClassName={styles.linkPage}
-                />
+        <div className={classNames(styles.searchPageWrapper)}>
+            <div className={styles.searchListTitle}>
+                Search results " {searchElement} "
             </div>
+            <div className={styles.searchCount}>
+                Found {searchedPostsCount} books
+            </div>
+            
+                <div>
+                    <SearchList
+                    searchedPosts={searchedPosts}
+                    count={searchedPostsCount}
+                    onScroll={onScroll}
+                    />
+                    <ReactPaginate
+                        pageCount={pagesCount}
+                        onPageChange={onPageChange}
+                        containerClassName={styles.pagesContainer}
+                        pageClassName={styles.pageNumber}
+                        breakClassName={styles.pageNumber}
+                        breakLinkClassName={styles.linkPage}
+                        activeLinkClassName={styles.linkPage}
+                        pageLinkClassName={styles.linkPage}
+                        activeClassName={styles.activePageNumber}
+                        nextClassName={classNames(styles.pageNumber, styles.arrowButton, {
+                        [styles.availableToClickButton]: page !== pagesCount
+                        })}
+                        previousClassName={classNames(styles.pageNumber, styles.arrowButton, {
+                        [styles.availableToClickButton]: page !== 1
+                        })}
+                        previousLinkClassName={styles.linkPage}
+                        nextLinkClassName={styles.linkPage}
+                    />
+                </div>
             
         </div>
     );

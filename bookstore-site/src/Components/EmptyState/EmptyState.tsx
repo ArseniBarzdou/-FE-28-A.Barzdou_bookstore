@@ -11,7 +11,7 @@ const EmptyState = () => {
     >
       <div className={styles.imgWrapper}>
         <img
-          src="https://img.freepik.com/premium-vector/the-robot-astronaut-man-sits-with-laptop-search-on-the-internet-internet-surfing-error-page-not-found-flat-color-illustration_138353-51.jpg?w=1800"
+          src="https://img.freepik.com/free-vector/archaeologists-searched-various-ancient-books_1150-43285.jpg?w=996&t=st=1670866774~exp=1670867374~hmac=bc580e7ea26ad7c1c57fcc38b3eb3ae7e4051ead2986f36137d29f2cfa96c82e"
           alt="Not found request"
         />
       </div>

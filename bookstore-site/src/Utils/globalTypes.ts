@@ -19,6 +19,9 @@ export type CardPostType = {
     publisher: string;
     year: number;
     rating: number;
+    pdf:string;
+    url:string;
+    desc:string;
 };
 
 export type BookType = {
@@ -32,7 +35,8 @@ export type BookType = {
     year: number;
     rating: number;
     pdf:string;
-    // likeStatus?: LikeStatus | null;
+    url:string;
+    desc:string;
 };
 
 export type BookProps = {

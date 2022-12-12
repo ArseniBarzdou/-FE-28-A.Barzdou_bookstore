@@ -6,7 +6,8 @@ import PagesWrapper from "../PagesWrapper/PagesWrapper";
 import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import Search from "../Search";
-import FavoriteCard from "../FavoriteCard";
+import FavoriteCard from "../FavoriteList";
+import CartList from "../CartList";
 // import SearchList from "../../Components/SearchList";
 
 
@@ -21,6 +22,7 @@ export enum PathNames{
     Search='/search/:search',
     BookCard='/books/:isbn13',
     FavoriteCard='/favorite',
+    CartList='/cart',
 
 }
 
@@ -36,6 +38,7 @@ const Router = () => {
             <Route path={PathNames.SignUp} element={<SignUp />} />
             <Route path={PathNames.BookCard} element={<BookCard />} />
             <Route path={PathNames.FavoriteCard} element={<FavoriteCard />} />
+            <Route path={PathNames.CartList} element={<CartList />} />
 
             </Route>
             <Route path={'*'} element={<Navigate to={PathNames.Home}/>} />

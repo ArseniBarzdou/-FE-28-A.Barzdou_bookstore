@@ -9,7 +9,6 @@
 .leftSideList {
     display: flex;
     flex-direction: column;
-    margin-right: 32px;
 }
 .largeCardListWrapper {
     max-width: 736px;

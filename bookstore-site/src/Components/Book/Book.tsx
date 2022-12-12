@@ -11,7 +11,6 @@ import Button, { ButtonType } from "../Button";
 import { PathNames } from "../../Pages/Router/Router";
 import PostsSelectors from "../../Redux/Selectors/postSelectors";
 import { 
-    IconArrowLeft,
     FavoriteIcon,
     FacebookIcon,
     TwitterIcon,
@@ -24,7 +23,6 @@ import {
 import { CardListType, TabsNames } from "../../Utils/globalTypes";
 import { BookProps } from './types';
 import Title from '../Title';
-import BackHome from '../BackHome';
 import Tabs from '../Tabs';
 
 
@@ -82,7 +80,6 @@ const Book: FC<BookProps> = ({ post }) => {
             
 
         
-            <BackHome/>
             <div className={styles.bookTitle}>
                 <Title title={title}/>
             </div>

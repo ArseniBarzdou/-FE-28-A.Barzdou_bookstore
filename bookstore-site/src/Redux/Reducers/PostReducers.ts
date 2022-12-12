@@ -117,7 +117,9 @@ const postsReducer = createSlice({
       // !! state.searchString = action.payload; для по буквенного поиска
     },
 
-    getMyFavoriteList: (state, action: PayloadAction<undefined>) => {},
+    getMyFavoriteList: (state, action: PayloadAction<GetPostsPayload>) => {
+
+    },
 
 
   }

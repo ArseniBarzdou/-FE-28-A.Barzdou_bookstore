@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 //@ts-ignore
 
-import styles from "./Favorite.module.css";
+import styles from "./CartList.module.css";
 import { PathNames } from "../Router/Router";
 import {IconArrowLeft} from '../../../src/Assets/Icons';
 import Title from '../../Components/Title';
@@ -33,25 +33,11 @@ import {
 } from "../../Utils";
 import Label from '../../Components/Label';
 
-const FavoriteCard = () => {
+const CartList = () => {
     const activeTab = useSelector(PostsSelectors.getActiveTab);
 
 
-    const tabs = useMemo(
-        () => [
-        {
-            key: TabsNames.All,
-            title: "All",
-            disabled: false
-        },
 
-        {
-            key: TabsNames.Favorites,
-            title: "My favorites",
-        },
-        ],
-        []
-    );
 
     const params = useParams();
     const cardsCount = useSelector(PostsSelectors.getCardsCount);
@@ -65,11 +51,11 @@ const FavoriteCard = () => {
         dispatch(setActiveTab(isbn13));
     };
 
-    useEffect(() => {
-        dispatch(
-            getMyFavoriteList()
-        )
-    }, [page, isMyFav]);
+    // useEffect(() => {
+    //     dispatch(
+    //         getMyFavoriteList()
+    //     )
+    // }, [page, isMyFav]);
 
     // useEffect(() => {
     //     if (isMyFav) {
@@ -92,19 +78,11 @@ const FavoriteCard = () => {
         return (
             <div>
             <div>
+            <Title title={"Your Cart"}/>
 
-                <div>
-                {/* <Tabs tabs={tabs} onClick={onTabClick} activeTab={activeTab} /> */}
-                </div>
-                <div>
-                    <div className={styles.labelWrapper}>
-                    <Label  title={"Similar  books"}></Label>
-                    </div>
-                    <PopularBooks cardList={cardsList}/>
-                </div>
             </div>
             </div>
         )
     };
 
-export default FavoriteCard;
+export default CartList;

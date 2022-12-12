@@ -75,8 +75,11 @@ const Header = ({ onClick }: any) => {
                     <FavoriteIcon/>
                 </NavLink>
                 
+                <NavLink
+                to={PathNames.CartList}>
                 <CartIcon/>
-                
+                </NavLink>
+
                 {currentUser ? (<UserIcon/>) : (<NavLink
                     to={PathNames.SignIn}
                     className={classNames({

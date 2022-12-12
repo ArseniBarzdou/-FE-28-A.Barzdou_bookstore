@@ -18,10 +18,10 @@ import PostsSelectors from "../../Redux/Selectors/postSelectors";
 import { getSinglePost } from '../../Redux/Reducers/PostReducers';
 import { CardListType, LikeStatus, BookProps } from "../../Utils/globalTypes";
 import Label from '../../Components/Label';
+import BackHome from '../../Components/BackHome';
+
 
 const BookCard = () => {
-    //   const { theme, onChangeTheme } = useThemeContext();
-    //   const isDarkTheme = theme === Theme.Dark;
     const params = useParams();
 
     const book = useSelector(PostsSelectors.getSinglePost);
@@ -38,6 +38,7 @@ const BookCard = () => {
 
         return (
             <div>
+                <BackHome/>
             <div>
 
                 <div>
