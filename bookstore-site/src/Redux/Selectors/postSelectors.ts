@@ -6,6 +6,7 @@ export default {
     getActiveTab: (state: any) => state.postsReducer.activeTab,
     getCardsList: (state: any) => state.postsReducer.cardsList,
     getFavoritePosts: (state: any) => state.postsReducer.favouritePostsList,
+    getCartPosts: (state: any) => state.postsReducer.cartPostsList,
     getSinglePost: (state: any) => state.postsReducer.singlePost,
     getSinglePostLoading: (state: any) => state.postsReducer.isPostLoading,
     getSearchedPostsLoading: (state: any) =>

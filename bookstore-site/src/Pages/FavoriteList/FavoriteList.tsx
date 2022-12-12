@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 //@ts-ignore
 
-import styles from "./Favorite.module.css";
+import styles from "./FavoriteList.module.css";
 import { PathNames } from "../Router/Router";
 import {IconArrowLeft} from '../../Assets/Icons';
 import Title from '../../Components/Title';

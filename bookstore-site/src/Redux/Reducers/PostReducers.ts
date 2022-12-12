@@ -19,6 +19,7 @@ type PostStateType = {
   activeTab: TabsNames;
   cardsList: CardListType;
   favouritePostsList: CardListType; 
+  cartPostsList: CardListType; 
   singlePost: CardPostType | null;
   isPostLoading: boolean;
   searchedPosts: CardListType;
@@ -36,6 +37,7 @@ const INITIAL_STATE: PostStateType = {
   activeTab: TabsNames.All,
   cardsList: [],
   favouritePostsList: [],
+  cartPostsList: [],
   singlePost: null,
   isPostLoading: false,
   searchedPosts: [],
@@ -94,6 +96,17 @@ const postsReducer = createSlice({
         state.favouritePostsList.splice(postIndex, 1);
       }
     },
+    setCartPost: (state, action: PayloadAction<CardPostType>) => {
+      const { isbn13 } = action.payload;
+      const postIndex = state.cartPostsList.findIndex(
+        post => post.isbn13 === isbn13
+      );
+      if (postIndex === -1) {
+        state.cartPostsList.push(action.payload);
+      } else {
+        state.cartPostsList.splice(postIndex, 1);
+      }
+    },
 
     setSearchPostsLoading: (state, action: PayloadAction<boolean>) => {
       state.isSearchPostsLoading = action.payload;
@@ -117,9 +130,9 @@ const postsReducer = createSlice({
       // !! state.searchString = action.payload; для по буквенного поиска
     },
 
-    getMyFavoriteList: (state, action: PayloadAction<GetPostsPayload>) => {
+    getMyFavoriteList: (state, action: PayloadAction<GetPostsPayload>) => {},
 
-    },
+    getMyCartList: (state, action: PayloadAction<GetPostsPayload>) => {},
 
 
   }
@@ -146,6 +159,8 @@ export const {
   searchForPosts,
   setSearchedPosts,
   setSearchedPostsCount,
-  getMyFavoriteList
+  getMyFavoriteList,
+  setCartPost,
+  getMyCartList
   
 } = postsReducer.actions;

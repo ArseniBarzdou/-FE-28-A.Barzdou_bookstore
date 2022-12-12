@@ -41,24 +41,24 @@ const FavoriteCard: FC<FavProps> = ({ post }) =>{
     return( 
     <>
         <div className={classNames(styles.favoriteWrapper)}>
-            <div><img src={image} alt="img" /></div>
-            <div>
-                <div>
-                    <div>{title}title</div>
-                    <div>authors{authors},{publisher}, {year}</div>
+            <div className={classNames(styles.favoriteImage)}><img src={image} alt="img" /></div>
+            <div className={classNames(styles.favoriteMiddle)}>
+                <div className={classNames(styles.favoriteInfo)}>
+                    <div className={classNames(styles.favoriteTitle)}>{title}</div>
+                    <div className={classNames(styles.favoriteAuthors)}>{authors},{publisher}, {year}</div>
                 </div>
-                <div>
-                    <div>{price}11</div>
-                    <div>{rating}4</div>
+                <div className={classNames(styles.favoriteBottom)}>
+                    <div className={classNames(styles.favoritePrice)}>{price}</div>
+                    <div className={classNames(styles.favoriteReview)}>{rating}</div>
                 </div>
-                <div>
-                <div
+            </div>
+                <div className={classNames(styles.favoriteLike)}>
+                    <div
                         onClick={onAddFavourite}
                         className={classNames({ [styles.favouritePost]: isFavorite })}>
                         <FavoriteIcon />
                     </div>
                 </div>
-            </div>
         </div>
     </>
     )

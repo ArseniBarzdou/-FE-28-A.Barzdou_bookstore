@@ -1,0 +1,80 @@
+.favoriteWrapper{
+    width: 1120px;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 48px 0;
+    margin-bottom: 72px;
+    border-bottom: 1px solid rgba(218, 218, 218, 1);
+
+}
+
+.favoriteImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #D7E4FD;
+    width: 256px;
+}
+.favoriteImage img{
+    width: 163px;
+}
+.favoriteMiddle{
+    display: block;
+    flex-direction: row;
+    margin: 30px 120px 0 32px;
+}
+
+
+.favoriteTitle{
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 8px;
+}
+
+.favoriteAuthors{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #A8A8A8;
+    margin-bottom: 38px;
+}
+
+.favoriteBottom{
+    display: flex;
+    align-items: center;
+    gap: 180px;
+}
+
+.favoritePrice{
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 60px;
+}
+
+.favoriteReview{}
+
+.favoriteLike{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 130px;
+}
+
+
+.favouritePost svg {
+    cursor: pointer;
+
+}
+
+.favouritePost svg path {
+    cursor: pointer;
+
+    fill: #ff0000;
+}
