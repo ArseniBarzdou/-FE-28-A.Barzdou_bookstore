@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import ReactPaginate from "react-paginate";
+
 import classNames from "classnames";
 //@ts-ignore
 
@@ -31,16 +33,20 @@ const Search = () => {
         PostsSelectors.getSearchedPostsLoading
     );
 
+    const cardsCount = useSelector(PostsSelectors.getCardsCount);
+
+    const pagesCount = Math.ceil(cardsCount / PER_PAGE);
+
     const [page, setPage] = useState(DEFAULT_PAGE_NUMBER);
 
     const searchString = useSelector(
-      PostsSelectors.getSearchString
+        PostsSelectors.getSearchString
     );
     // !! для поиска по буквенно
     console.log(searchedPosts)
     useEffect(() => {
         if (searchElement.length === 0) {
-        navigate(PathNames.Home);
+        navigate(PathNames.Search);
         }
     }, [searchElement]);
 
@@ -51,6 +57,10 @@ const Search = () => {
         );
     }, [page]);
 
+    const onPageChange = ({ selected }: { selected: number }) => {
+        setPage(selected + 1);
+    };
+    console.log(page);
     const onScroll = () => {
         setPage(prevPage => prevPage + 1);
     };
@@ -69,6 +79,25 @@ const Search = () => {
                 searchedPosts={searchedPosts}
                 count={searchedPostsCount}
                 onScroll={onScroll}
+                />
+                <ReactPaginate
+                    pageCount={pagesCount}
+                    onPageChange={onPageChange}
+                    containerClassName={styles.pagesContainer}
+                    pageClassName={styles.pageNumber}
+                    breakClassName={styles.pageNumber}
+                    breakLinkClassName={styles.linkPage}
+                    activeLinkClassName={styles.linkPage}
+                    pageLinkClassName={styles.linkPage}
+                    activeClassName={styles.activePageNumber}
+                    nextClassName={classNames(styles.pageNumber, styles.arrowButton, {
+                    [styles.availableToClickButton]: page !== pagesCount
+                    })}
+                    previousClassName={classNames(styles.pageNumber, styles.arrowButton, {
+                    [styles.availableToClickButton]: page !== 1
+                    })}
+                    previousLinkClassName={styles.linkPage}
+                    nextLinkClassName={styles.linkPage}
                 />
             </div>
             

@@ -19,14 +19,17 @@ import { GetPostsPayload, SearchPostsPayload } from "../../Utils";
 
 import { PayloadAction } from "@reduxjs/toolkit";
 
-function* getPostsWorker() {
+function* getPostsWorker(action: PayloadAction<GetPostsPayload>) {
 
 
-
-    const { data, status, problem } = yield call(Api.getPostsList);
+  const { offset, limit } = action.payload;
+    const { data, status, problem } = yield call(Api.getPostsList, offset, limit);
 
     if (status === 200 && data) {
-    yield put(setCardsList(data.books));
+      yield put(setCardsList(data.books));
+            if (data.length >= 12) {
+        yield getPostsCountWorker();
+      }
     } else {
     console.log(problem);
 }
@@ -37,7 +40,7 @@ function* getPostsCountWorker() {
   const { data, status, problem } = yield call(Api.getPostsCount);
 
   if (status === 200 && data) {
-    yield put(setCardsCount(data));
+    yield put(setCardsCount(data.total));
   } else {
     console.log(problem);
   }
@@ -55,7 +58,7 @@ function* getSinglePostWorker(action: PayloadAction<string>) {
 }
 
 function* getSearchedPostsWorker(action: PayloadAction<SearchPostsPayload>) {
-    const { offset, isOverwrite, search } = action.payload;
+    const { search, isOverwrite, offset } = action.payload;
   
     yield put(setSearchPostsLoading(true));
     const { data, status, problem } = yield call(
@@ -64,7 +67,7 @@ function* getSearchedPostsWorker(action: PayloadAction<SearchPostsPayload>) {
       offset
     );
     if (status === 200 && data) {
-      yield put(setSearchedPostsCount(data.query));
+      yield put(setSearchedPostsCount(data.total));
       yield put(setSearchedPosts({ data: data.books, isOverwrite }));
     } else {
       console.log("Error getting search posts", problem);

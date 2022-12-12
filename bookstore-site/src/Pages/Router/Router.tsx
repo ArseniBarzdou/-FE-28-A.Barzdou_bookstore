@@ -18,7 +18,7 @@ export enum PathNames{
     Home = '/',
     SignIn='/sign-in',
     SignUp='/sign-up',
-    Search='/search',
+    Search='/search/:search',
     BookCard='/books/:isbn13',
     FavoriteCard='/favorite',
 

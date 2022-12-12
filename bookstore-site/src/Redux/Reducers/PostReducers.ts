@@ -3,6 +3,7 @@ import {
   CardListType,
   CardPostType,
   TabsNames,
+  GetPostsPayload,
   SearchPostsPayload,
   SetSearchedPostsPayload
 } from "../../Utils/globalTypes";
@@ -48,7 +49,7 @@ const postsReducer = createSlice({
   name: "books",
   initialState: INITIAL_STATE,
   reducers: {
-    getPosts: (state, action: PayloadAction<undefined>) => {},
+    getPosts: (state, action: PayloadAction<GetPostsPayload>) => {},
     getSinglePost: (state, action: PayloadAction<string>) => {},
     setSinglePost: (state, action: PayloadAction<CardPostType>) => {
       state.singlePost = action.payload;

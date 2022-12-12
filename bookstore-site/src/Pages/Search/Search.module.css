@@ -17,3 +17,56 @@
   line-height: 80px;
   margin-bottom: 65px;
 }
+
+.searchCount{
+  display: flex;
+  margin: 0 auto  ;
+  max-width: 1120px;
+  color: #A8A8A8;
+}
+
+.pagesContainer {
+  margin: 0px 24px;
+  display: flex;
+  padding: 0px;
+  margin-bottom: 72px;
+}
+.pageNumber {
+  list-style-type: none;
+  margin-right: 20px;
+  width: 42px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: #53607a;
+  outline: none;
+}
+.pageNumber a{
+    width:100%;
+    height: 100%;
+    text-align: center;
+}
+.pageNumber:hover {
+  cursor: pointer;
+  background-color: #f0edf6;
+}
+.linkPage {
+  outline: none;
+}
+.linkPage:focus {
+  outline: none;
+}
+.activePageNumber {
+  box-sizing: border-box;
+  width: 42px;
+  height: 20px;
+  border: 1px solid rgb(101, 85, 168);
+  color: rgb(121, 111, 158);
+}
+.arrowButton {
+  margin: auto;
+  align-items: flex-start;
+}

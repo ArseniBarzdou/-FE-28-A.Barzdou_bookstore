@@ -29,11 +29,11 @@ const CardList: FC<CardListProps> = ({ cardList }) => {
         <div className={styles.leftSideList}>
             <div className={styles.mediumCardListWrapper}>
             {cardList.map((post, isbn13) => {
-                if (isbn13 >= 0 && isbn13 <= 11) {
+                
                 return (
                     <CardPost post={post} key={post.isbn13} />
                 );
-                }
+                
             })}
             </div>
         </div>

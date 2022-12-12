@@ -8,23 +8,16 @@ import { PER_PAGE } from "../../Utils";
 
 const API = create({
     baseURL: 'https://api.itbook.store/1.0',
-    // baseURL: 'https://studapi.teachmeskills.by',
     });
 
-    // const createNewUser = (userData: UserActionPayload) => {
-    // return API.post('/auth/users/', userData);
-    // };
 
-    const getPostsList = () => {
-    return API.get('/new');
+
+    const getPostsList = (offset: number, limit?: number) => {
+    return API.get('/new', { limit, offset });
     };
 
-    // const activateNewUser = (params: ActivationParams) => {
-    // return API.post('/auth/users/activation/', params);
-    // };
-
     const getPostsCount = () => {
-      return API.get("search/game");
+      return API.get("/new");
     };
 
     const getPost = (isbn13: string) => {
@@ -32,7 +25,7 @@ const API = create({
     };
 
     const getSearchedPosts = (search: string, offset: number) => {
-        return API.get("/search/{query}", { search, limit: 10, offset });
+        return API.get(`/search/${search}`, { search, limit:PER_PAGE, offset });
     };
     
     const createNewUser = (userData: UserActionPayload) => {

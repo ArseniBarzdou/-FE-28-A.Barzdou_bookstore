@@ -20,7 +20,7 @@ import AuthSelectors from "../../Redux/Selectors/authSelectors";
 import { searchForPosts } from "../../Redux/Reducers/PostReducers"
 import InputSearch from '../InputSearch';
 
-const Header = ({ onClick, isOpened }: any) => {
+const Header = ({ onClick }: any) => {
     const location = useLocation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -35,19 +35,19 @@ const Header = ({ onClick, isOpened }: any) => {
     };
 
     const onSearch = () => {
-        if (value.length > 0) {
-           dispatch(
-                searchForPosts({
-                  search: value,
-                  offset: 0,
-                  isOverwrite: true
-                })
-              );
-          navigate(PathNames.Search, { state: { searchElement: value } });
-          setValue("");
-          onClick();
-        }
-      };
+            if (value.length > 0) {
+            dispatch(
+                    searchForPosts({
+                        search: value,
+                        offset: 0,
+                        isOverwrite: true
+                    })
+                );
+            navigate(`/search/${value}`, { state: { searchElement: value } });
+            setValue("");
+            onClick();
+            }
+    };
     
 
     return (

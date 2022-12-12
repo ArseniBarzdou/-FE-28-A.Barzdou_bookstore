@@ -7,7 +7,7 @@ import CardPost from "../CardPost";
 import { SearchListProps } from "./types";
 import EmptyState from "../EmptyState";
 
-const SearchList: FC<SearchListProps> = ({ searchedPosts, count, onScroll }) => {
+const SearchList: FC<SearchListProps> = ({ searchedPosts }) => {
     return searchedPosts && searchedPosts.length > 0 ? (
         <div className={classNames(styles.searchListWrapper)}>
         {searchedPosts.map(post => {

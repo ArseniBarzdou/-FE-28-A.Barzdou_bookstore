@@ -19,7 +19,6 @@ export type CardPostType = {
     publisher: string;
     year: number;
     rating: number;
-    // likeStatus?: LikeStatus | null;
 };
 
 export type BookType = {
@@ -78,8 +77,8 @@ export type User = {
 };
 
 export type GetPostsPayload = {
+    limit?: number
     offset: number;
-    ordering: string;
 };
 
 export type SearchPostsPayload = {

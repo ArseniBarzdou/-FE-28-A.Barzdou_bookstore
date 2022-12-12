@@ -16,7 +16,6 @@ import PopularBooks from '../../Components/PopularBooks';
 import Book from '../../Components/Book';
 import PostsSelectors from "../../Redux/Selectors/postSelectors";
 import { getSinglePost } from '../../Redux/Reducers/PostReducers';
-import CardList from '../../Components/CardList';
 import { CardListType, LikeStatus, BookProps } from "../../Utils/globalTypes";
 import Label from '../../Components/Label';
 
