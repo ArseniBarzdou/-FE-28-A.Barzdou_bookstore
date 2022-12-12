@@ -19,6 +19,7 @@ import {
 import { 
     setFavouritePost,
     setActiveTab,
+    setCartPost,
 } from "../../Redux/Reducers/PostReducers";
 import { CardListType, TabsNames } from "../../Utils/globalTypes";
 import { BookProps } from './types';
@@ -57,22 +58,32 @@ const Book: FC<BookProps> = ({ post }) => {
 
     const dispatch = useDispatch();
 
-    const favouritePostsList: CardListType = useSelector(
-        PostsSelectors.getFavoritePosts
-    );
-
-    const activeTab = useSelector(PostsSelectors.getActiveTab);
-
     const onTabClick = (id: TabsNames) => {
         dispatch(setActiveTab(id));
     };
+    const activeTab = useSelector(PostsSelectors.getActiveTab);
+    
+    const favouritePostsList: CardListType = useSelector(
+        PostsSelectors.getFavoritePosts
+    );
+    const cartPostsList: CardListType = useSelector(
+        PostsSelectors.getCartPosts
+    );
 
     const currentPostIndex = favouritePostsList.findIndex(post => post.isbn13 === isbn13);
     const isFavorite = currentPostIndex !== -1;
 
+    const currentCartIndex = cartPostsList.findIndex(post => post.isbn13 === isbn13);
+    const isCart = currentCartIndex !== -1;
+
     const onAddFavourite = (event: any) => {
         event.stopPropagation();
         dispatch(setFavouritePost(post));
+    };
+
+    const onAddCart = (event: any) => {
+        event.stopPropagation();
+        dispatch(setCartPost(post));
     };
     
     return (
@@ -120,7 +131,9 @@ const Book: FC<BookProps> = ({ post }) => {
                                 More details
                             </div>
                     <div className={classNames(styles.infoButtonSide)}>
-                        <div className={classNames(styles.infoText)}>
+                        <div 
+                        onClick={onAddCart}
+                        className={classNames({ [styles.infoText]: isCart })}>
                             <Button 
                                 type={ButtonType.Primary}
                                 title={"Add To Card"}

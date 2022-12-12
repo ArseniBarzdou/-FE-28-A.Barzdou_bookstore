@@ -7,7 +7,7 @@ import SignIn from "../SignIn";
 import SignUp from "../SignUp";
 import Search from "../Search";
 import FavoriteCard from "../FavoriteList";
-import CartList from "../CartList";
+import Cart from "../Cart/Cart";
 // import SearchList from "../../Components/SearchList";
 
 
@@ -22,7 +22,7 @@ export enum PathNames{
     Search='/search/:search',
     BookCard='/books/:isbn13',
     FavoriteCard='/favorite',
-    CartList='/cart',
+    Cart='/cart',
 
 }
 
@@ -38,7 +38,7 @@ const Router = () => {
             <Route path={PathNames.SignUp} element={<SignUp />} />
             <Route path={PathNames.BookCard} element={<BookCard />} />
             <Route path={PathNames.FavoriteCard} element={<FavoriteCard />} />
-            <Route path={PathNames.CartList} element={<CartList />} />
+            <Route path={PathNames.Cart} element={<Cart />} />
 
             </Route>
             <Route path={'*'} element={<Navigate to={PathNames.Home}/>} />

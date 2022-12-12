@@ -7,37 +7,31 @@ import { useParams } from "react-router-dom";
 
 //@ts-ignore
 
-import styles from "./CartList.module.css";
+import styles from "./Cart.module.css";
 import { PathNames } from "../Router/Router";
-import {IconArrowLeft} from '../../../src/Assets/Icons';
 import Title from '../../Components/Title';
-import Subscribe from '../../Components/Subscribe';
-import PopularBooks from '../../Components/PopularBooks';
 import Book from '../../Components/Book';
 import PostsSelectors from "../../Redux/Selectors/postSelectors";
 import { 
     getSinglePost,  
     setActiveTab,
-    setFavouritePost,
-    getMyFavoriteList,
+    setCartPost,
+    getMyCartList,
     getPosts,
 } from '../../Redux/Reducers/PostReducers';
 import CardList from '../../Components/CardList';
 import Tabs from '../../Components/Tabs';
 import { 
     CardListType, 
-    LikeStatus,   
-    TabsNames,
     DEFAULT_PAGE_NUMBER,
     PER_PAGE,
 } from "../../Utils";
 import Label from '../../Components/Label';
+import FavoriteCard from '../../Components/FavoriteCard';
+import CartList from '../../Components/CartList';
 
-const CartList = () => {
-    const activeTab = useSelector(PostsSelectors.getActiveTab);
-
-
-
+const Cart = () => {
+    const cartList = useSelector(PostsSelectors.getCartPosts);
 
     const params = useParams();
     const cardsCount = useSelector(PostsSelectors.getCardsCount);
@@ -46,25 +40,6 @@ const CartList = () => {
     const pagesCount = Math.ceil(cardsCount / PER_PAGE);
 
 
-    const isMyFav = activeTab === TabsNames.Favorites;
-    const onTabClick = (isbn13: TabsNames) => {
-        dispatch(setActiveTab(isbn13));
-    };
-
-    // useEffect(() => {
-    //     dispatch(
-    //         getMyFavoriteList()
-    //     )
-    // }, [page, isMyFav]);
-
-    // useEffect(() => {
-    //     if (isMyFav) {
-    //         dispatch(getMyFavoriteList(isbn13));
-    //     }
-    // }, [isMyFav]);
-
-    const book = useSelector(PostsSelectors.getSinglePost);
-    const cardsList = useSelector(PostsSelectors.getCardsList);
     const dispatch = useDispatch();
     const { isbn13 } = params;
 
@@ -74,15 +49,27 @@ const CartList = () => {
             dispatch(getSinglePost(isbn13));
         }
     }, [isbn13]);
+    console.log(cartList)
+
+    useEffect(() => {
+        const offset = (page - 1) * PER_PAGE;
+        
+        dispatch(getMyCartList({ offset }));
+    }, [page]);
 
         return (
             <div>
             <div>
             <Title title={"Your Cart"}/>
 
-            </div>
+                    <div>
+                        <CartList   
+                            CartPosts={cartList}
+                        />
+                    </div>
+                </div>
             </div>
         )
     };
 
-export default CartList;
+export default Cart;

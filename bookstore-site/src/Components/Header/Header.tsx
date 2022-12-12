@@ -76,7 +76,7 @@ const Header = ({ onClick }: any) => {
                 </NavLink>
                 
                 <NavLink
-                to={PathNames.CartList}>
+                to={PathNames.Cart}>
                 <CartIcon/>
                 </NavLink>
 

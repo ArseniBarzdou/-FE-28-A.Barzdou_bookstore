@@ -1,4 +1,6 @@
 import React, {FC} from 'react';
+import { useNavigate } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import classNames from 'classnames';
 
@@ -25,6 +27,8 @@ const FavoriteCard: FC<FavProps> = ({ post }) =>{
     const { price, image, title,subtitle, rating, isbn13, authors, year, publisher, pdf, url, desc} = post;
     
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
     const favouritePostsList: CardListType = useSelector(
         PostsSelectors.getFavoritePosts
@@ -38,9 +42,12 @@ const FavoriteCard: FC<FavProps> = ({ post }) =>{
         dispatch(setFavouritePost(post));
     };
 
+    const onNavigateToPost = () => {
+        navigate(`/books/${isbn13}`);
+    };
     return( 
     <>
-        <div className={classNames(styles.favoriteWrapper)}>
+        <div className={classNames(styles.favoriteWrapper)} onClick={onNavigateToPost}>
             <div className={classNames(styles.favoriteImage)}><img src={image} alt="img" /></div>
             <div className={classNames(styles.favoriteMiddle)}>
                 <div className={classNames(styles.favoriteInfo)}>

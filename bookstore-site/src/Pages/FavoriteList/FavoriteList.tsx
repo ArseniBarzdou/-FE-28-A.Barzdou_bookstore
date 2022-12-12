@@ -9,9 +9,7 @@ import { useParams } from "react-router-dom";
 
 import styles from "./FavoriteList.module.css";
 import { PathNames } from "../Router/Router";
-import {IconArrowLeft} from '../../Assets/Icons';
 import Title from '../../Components/Title';
-import Subscribe from '../../Components/Subscribe';
 import PopularBooks from '../../Components/PopularBooks';
 import Book from '../../Components/Book';
 import PostsSelectors from "../../Redux/Selectors/postSelectors";
@@ -26,17 +24,13 @@ import CardList from '../../Components/CardList';
 import Tabs from '../../Components/Tabs';
 import { 
     CardListType, 
-    LikeStatus,   
-    TabsNames,
     DEFAULT_PAGE_NUMBER,
     PER_PAGE,
 } from "../../Utils";
 import Label from '../../Components/Label';
-import FavoriteCard from '../../Components/FavoriteCard';
 import FavList from '../../Components/FavList';
 
 const FavoriteList = () => {
-    const activeTab = useSelector(PostsSelectors.getActiveTab);
     const favList = useSelector(PostsSelectors.getFavoritePosts);
 
     const params = useParams();
@@ -71,16 +65,14 @@ const FavoriteList = () => {
 
                 <div>
                     <FavList   
-                    FavoritePosts={favList}
-                    // count={searchedPostsCount}
-                    // onScroll={onScroll}
+                        FavoritePosts={favList}
                     />
                 </div>
                 <div>
                     <div className={styles.labelWrapper}>
-                    <Label  title={"Popular Books"}></Label>
+                        <Label  title={"Popular Books"}></Label>
                     </div>
-                    <PopularBooks cardList={cardsList}/>
+                        <PopularBooks cardList={cardsList}/>
                 </div>
             </div>
             </div>
