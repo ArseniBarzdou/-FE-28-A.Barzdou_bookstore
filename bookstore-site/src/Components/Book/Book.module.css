@@ -14,7 +14,12 @@
     gap: 128px;
     max-width: 1120px;
     margin: 0  auto;
+    justify-content: space-between
 };
+
+.imgWrapper{
+    background: #9a98f0;
+}
 
 .leftSideList{
     width: 544px;
